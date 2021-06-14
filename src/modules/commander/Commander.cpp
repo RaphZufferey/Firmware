@@ -3204,19 +3204,37 @@ Commander::update_control_mode()
 		(_status.vehicle_type == vehicle_status_s::VEHICLE_TYPE_FIXED_WING && !_status.is_vtol);
 
 	switch (_status.nav_state) {
+
+	case vehicle_status_s::NAVIGATION_STATE_SAIL:
+		_vehicle_control_mode.flag_control_sail_enabled = true;
+		_vehicle_control_mode.flag_control_manual_enabled = false;
+		_vehicle_control_mode.flag_control_auto_enabled = false;
+		_vehicle_control_mode.flag_control_rates_enabled = false;
+		_vehicle_control_mode.flag_control_attitude_enabled = false;
+		_vehicle_control_mode.flag_control_altitude_enabled = false;
+		_vehicle_control_mode.flag_control_climb_rate_enabled = false;
+		_vehicle_control_mode.flag_control_position_enabled = false;
+		_vehicle_control_mode.flag_control_velocity_enabled = false;
+		_vehicle_control_mode.flag_control_acceleration_enabled = false;
+		_vehicle_control_mode.flag_control_termination_enabled = false;
+		break;
+
 	case vehicle_status_s::NAVIGATION_STATE_MANUAL:
+		_vehicle_control_mode.flag_control_sail_enabled = false;
 		_vehicle_control_mode.flag_control_manual_enabled = true;
 		_vehicle_control_mode.flag_control_rates_enabled = stabilization_required();
 		_vehicle_control_mode.flag_control_attitude_enabled = stabilization_required();
 		break;
 
 	case vehicle_status_s::NAVIGATION_STATE_STAB:
+		_vehicle_control_mode.flag_control_sail_enabled = false;
 		_vehicle_control_mode.flag_control_manual_enabled = true;
 		_vehicle_control_mode.flag_control_rates_enabled = true;
 		_vehicle_control_mode.flag_control_attitude_enabled = true;
 		break;
 
 	case vehicle_status_s::NAVIGATION_STATE_ALTCTL:
+		_vehicle_control_mode.flag_control_sail_enabled = false;
 		_vehicle_control_mode.flag_control_manual_enabled = true;
 		_vehicle_control_mode.flag_control_rates_enabled = true;
 		_vehicle_control_mode.flag_control_attitude_enabled = true;
@@ -3225,6 +3243,7 @@ Commander::update_control_mode()
 		break;
 
 	case vehicle_status_s::NAVIGATION_STATE_POSCTL:
+		_vehicle_control_mode.flag_control_sail_enabled = false;
 		_vehicle_control_mode.flag_control_manual_enabled = true;
 		_vehicle_control_mode.flag_control_rates_enabled = true;
 		_vehicle_control_mode.flag_control_attitude_enabled = true;
@@ -3246,6 +3265,7 @@ Commander::update_control_mode()
 	case vehicle_status_s::NAVIGATION_STATE_AUTO_MISSION:
 	case vehicle_status_s::NAVIGATION_STATE_AUTO_LOITER:
 	case vehicle_status_s::NAVIGATION_STATE_AUTO_TAKEOFF:
+		_vehicle_control_mode.flag_control_sail_enabled = false;
 		_vehicle_control_mode.flag_control_auto_enabled = true;
 		_vehicle_control_mode.flag_control_rates_enabled = true;
 		_vehicle_control_mode.flag_control_attitude_enabled = true;
@@ -3256,6 +3276,7 @@ Commander::update_control_mode()
 		break;
 
 	case vehicle_status_s::NAVIGATION_STATE_AUTO_LANDGPSFAIL:
+		_vehicle_control_mode.flag_control_sail_enabled = false;
 		_vehicle_control_mode.flag_control_rates_enabled = true;
 		_vehicle_control_mode.flag_control_attitude_enabled = true;
 		_vehicle_control_mode.flag_control_climb_rate_enabled = true;
@@ -3267,6 +3288,7 @@ Commander::update_control_mode()
 		break;
 
 	case vehicle_status_s::NAVIGATION_STATE_DESCEND:
+		_vehicle_control_mode.flag_control_sail_enabled = false;
 		_vehicle_control_mode.flag_control_auto_enabled = false;
 		_vehicle_control_mode.flag_control_rates_enabled = true;
 		_vehicle_control_mode.flag_control_attitude_enabled = true;
