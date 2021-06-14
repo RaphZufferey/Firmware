@@ -25,7 +25,7 @@
 
 . ${R}etc/init.d/rc.fw_defaults
 
-param set-default FW_AIRSPD_MIN 10
+param set-default FW_AIRSPD_MIN 8
 param set-default FW_AIRSPD_TRIM 15
 param set-default FW_AIRSPD_MAX 20
 
@@ -40,10 +40,10 @@ param set-default FW_WR_P 1
 param set-default FW_W_RMAX 0
 
 # set disarmed value for the ESC
-param set-default PWM_MAIN_DISARM 1000
+param set-default PWM_MAIN_DISARM 900
 
 
-set MIXER AAERTWF
+set MIXER AAERTWF_SAILMAV
 
 # use PWM parameters for throttle channel
 set PWM_OUT 5
