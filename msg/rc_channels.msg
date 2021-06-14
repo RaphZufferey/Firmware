@@ -26,6 +26,7 @@ uint8 FUNCTION_ARMSWITCH  = 22
 uint8 FUNCTION_STAB       = 23
 uint8 FUNCTION_AUX_6      = 24
 uint8 FUNCTION_MAN        = 25
+uint8 RC_CHANNELS_FUNCTION_SAIL= 27
 
 uint64 timestamp_last_valid					# Timestamp of last valid RC signal
 float32[18] channels						# Scaled to -1..1 (throttle: 0..1)
