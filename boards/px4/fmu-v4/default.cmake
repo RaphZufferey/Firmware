@@ -84,6 +84,7 @@ px4_add_board(
 		rover_pos_control
 		sensors
 		sih
+		sailing
 		temperature_compensation
 		uuv_att_control
 		uuv_pos_control
