@@ -3302,6 +3302,7 @@ Commander::update_control_mode()
 
 	case vehicle_status_s::NAVIGATION_STATE_OFFBOARD:
 		_vehicle_control_mode.flag_control_offboard_enabled = true;
+		_vehicle_control_mode.flag_control_sail_enabled = false;
 
 		if (_offboard_control_mode_sub.get().position) {
 			_vehicle_control_mode.flag_control_position_enabled = true;
