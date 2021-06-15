@@ -354,7 +354,7 @@ int Commander::custom_command(int argc, char *argv[])
 				send_vehicle_command(vehicle_command_s::VEHICLE_CMD_DO_SET_MODE, 1, PX4_CUSTOM_MAIN_MODE_AUTO,
 						     PX4_CUSTOM_SUB_MODE_AUTO_PRECLAND);
 
-			} else if (!strcmp(argv[1], "auto:precland")) {
+			} else if (!strcmp(argv[1], "sail")) {
 				send_vehicle_command(vehicle_command_s::VEHICLE_CMD_DO_SET_MODE, 1, PX4_CUSTOM_MAIN_MODE_SAIL);
 			} else {
 				PX4_ERR("argument %s unsupported.", argv[1]);
