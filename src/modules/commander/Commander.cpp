@@ -354,6 +354,8 @@ int Commander::custom_command(int argc, char *argv[])
 				send_vehicle_command(vehicle_command_s::VEHICLE_CMD_DO_SET_MODE, 1, PX4_CUSTOM_MAIN_MODE_AUTO,
 						     PX4_CUSTOM_SUB_MODE_AUTO_PRECLAND);
 
+			} else if (!strcmp(argv[1], "auto:precland")) {
+				send_vehicle_command(vehicle_command_s::VEHICLE_CMD_DO_SET_MODE, 1, PX4_CUSTOM_MAIN_MODE_SAIL);
 			} else {
 				PX4_ERR("argument %s unsupported.", argv[1]);
 			}
@@ -728,6 +730,10 @@ Commander::handle_command(const vehicle_command_s &cmd)
 				if (custom_main_mode == PX4_CUSTOM_MAIN_MODE_MANUAL) {
 					/* MANUAL */
 					main_ret = main_state_transition(_status, commander_state_s::MAIN_STATE_MANUAL, _status_flags, _internal_state);
+
+				if (custom_main_mode == PX4_CUSTOM_MAIN_MODE_SAIL) {
+					/* SAIL */
+					main_ret = main_state_transition(_status, commander_state_s::MAIN_STATE_SAIL, _status_flags, _internal_state);
 
 				} else if (custom_main_mode == PX4_CUSTOM_MAIN_MODE_ALTCTL) {
 					/* ALTCTL */
