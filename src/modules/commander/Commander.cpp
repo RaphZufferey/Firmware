@@ -2951,7 +2951,8 @@ Commander::set_main_state_rc()
 		|| (_last_manual_control_switches.loiter_switch != _manual_control_switches.loiter_switch)
 		|| (_last_manual_control_switches.mode_slot != _manual_control_switches.mode_slot)
 		|| (_last_manual_control_switches.stab_switch != _manual_control_switches.stab_switch)
-		|| (_last_manual_control_switches.man_switch != _manual_control_switches.man_switch);
+		|| (_last_manual_control_switches.man_switch != _manual_control_switches.man_switch)
+		|| (_last_manual_control_switches.sail_switch != manual_control_switches.sail_switch);
 
 
 	if (_status.arming_state == vehicle_status_s::ARMING_STATE_ARMED) {
@@ -2988,6 +2989,19 @@ Commander::set_main_state_rc()
 
 	/* set main state according to RC switches */
 	transition_result_t res = TRANSITION_NOT_CHANGED;
+
+	/* sail switch */
+	if (_manual_control_switches.sail_switch == manual_control_switches_s::SWITCH_POS_ON) {
+		res = main_state_transition(_status, commander_state_s::MAIN_STATE_SAIL, _status_flags, _internal_state);
+
+		if (res == TRANSITION_DENIED) {
+			print_reject_mode(commander_state_s::MAIN_STATE_SAIL);
+			/* mode rejected, continue to evaluate the main system mode */
+
+		} else {
+			/* changed successfully or already in this state */
+			return res;
+		
 
 	/* offboard switch overrides main switch */
 	if (_manual_control_switches.offboard_switch == manual_control_switches_s::SWITCH_POS_ON) {
