@@ -36,7 +36,8 @@
 //push
 
 //px4_module_params.h to get the DEFINE_PARAMETERS macro
-#include <px4_module_params.h>
+#include <px4_platform_common/module_params.h>
+// #include <px4_module_params.h>
 #include "params.c"
 
 #define DOWNWARDS 0

@@ -33,18 +33,17 @@
 
 #pragma once
 
-#include <px4_config.h>
-#include <px4_tasks.h>
-#include <px4_posix.h>
+#include <px4_platform_common/px4_config.h>
+#include <px4_platform_common/tasks.h>
+#include <px4_platform_common/posix.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <poll.h>
 #include <string.h>
 #include <math.h>
 
-#include <px4_getopt.h>
-#include <px4_log.h>
-#include <px4_posix.h>
+#include <px4_platform_common/getopt.h>
+#include <px4_platform_common/log.h>
 
 // system libraries
 #include <parameters/param.h>
@@ -57,8 +56,8 @@
 #include <lib/ecl/geo/geo.h>
 
 
-#include <px4_module.h>
-#include <px4_module_params.h>
+#include <px4_platform_common/module.h>
+#include <px4_platform_common/module_params.h>
 #include <uORB/uORB.h>
 #include <uORB/topics/sensor_combined.h>                // this topics hold the acceleration data
 #include <uORB/topics/actuator_controls.h>              // this topic gives the actuators control input

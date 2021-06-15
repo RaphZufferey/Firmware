@@ -39,12 +39,12 @@
 #include <math.h>
 
 #include <drivers/device/i2c.h>
-#include <drivers/device/ringbuffer.h>
+// #include <drivers/device/ringbuffer.h>
 #include <perf/perf_counter.h>
-#include <px4_config.h>
-#include <px4_defines.h>
-#include <px4_getopt.h>
-#include <px4_module.h>
+#include <px4_platform_common/px4_config.h>
+#include <px4_platform_common/defines.h>
+#include <px4_platform_common/px4_getopt.h>
+#include <px4_platform_common/module.h>
 #include <px4_platform_common/px4_work_queue/ScheduledWorkItem.hpp>
 #include <sys/types.h>
 #include <uORB/uORB.h>
