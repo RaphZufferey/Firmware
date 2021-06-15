@@ -1,4 +1,9 @@
-
+/**
+ * @file mc_sailing_params.c
+ * Multicopter perching controller parameters.
+ *
+ * @author
+ */
 
 /**
  * New Parameter
@@ -10,7 +15,6 @@
  * @group Custom Parameters
  */
 PARAM_DEFINE_INT32(NEW, 2);
-
 
 /**
  * Wind angle
