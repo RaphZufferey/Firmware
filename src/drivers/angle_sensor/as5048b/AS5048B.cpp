@@ -43,7 +43,7 @@
 #include <perf/perf_counter.h>
 #include <px4_platform_common/px4_config.h>
 #include <px4_platform_common/defines.h>
-#include <px4_platform_common/px4_getopt.h>
+#include <px4_platform_common/getopt.h>
 #include <px4_platform_common/module.h>
 #include <px4_platform_common/px4_work_queue/ScheduledWorkItem.hpp>
 #include <sys/types.h>
@@ -282,7 +282,7 @@ private:
 
 
 AMS_AS5048B::AMS_AS5048B(const uint8_t bus, const uint8_t address, const char *path) :
-  I2C("as5048", path, bus, address, AS5048B_BUS_CLOCK),
+  I2C(DRV_DEVTYPE_UNUSED, path, bus, address, AS5048B_BUS_CLOCK),
   ScheduledWorkItem(MODULE_NAME, px4::device_bus_to_wq(get_device_id()))
 {
   _chip_address = address;
@@ -313,7 +313,7 @@ AMS_AS5048B::collect()
   report.wind_magnetic_angle = read_angle();
 
   orb_publish_auto(ORB_ID(sensor_wind_angle), &_wind_angle_topic, &report,
-       &_orb_class_instance, ORB_PRIO_DEFAULT);
+       &_orb_class_instance);
 
   perf_count(_sample_perf);
   perf_end(_sample_perf);
